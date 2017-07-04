@@ -1,0 +1,9 @@
+date	time	id	user	action	table	field	key value	old value	new value
+2016/10/27	02:56:42	/mst_additionallist.php	-1	U	mst_additional	price	Ad001	95000	90000
+2016/10/27	02:56:52	/mst_additionallist.php	-1	U	mst_additional	price	AD002	55000	65000
+2016/10/27	02:57:08	/mst_additionallist.php	-1	U	mst_additional	price	AD005	800000	1000000
+2016/10/27	02:57:31	/mst_additionallist.php	-1	U	mst_additional	price	AD009	300000	244200
+2016/10/27	07:28:57	/mst_additionallist.php	-1	U	mst_additional	price	AD009	244200	250000
+2016/10/27	07:29:36	/mst_additionallist.php	-1	A	mst_additional	kode	AD010		AD010
+2016/10/27	07:29:36	/mst_additionallist.php	-1	A	mst_additional	description	AD010		Charge Person
+2016/10/27	07:29:36	/mst_additionallist.php	-1	A	mst_additional	price	AD010		185000
