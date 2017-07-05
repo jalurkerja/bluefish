@@ -7,6 +7,8 @@
 	$no = 0;
 
 	if($mode == "notifications_list"){
+		$return .= "<table class='title'><tr><td>NOTIFICATION LIST</td></tr></table>";
+		$return .= "<br>";
 		$return .= "<table class='list'>";
 		$sql = "SELECT a.id,a.title,b.status FROM app_notifications a INNER JOIN app_notifications_status b ON a.id = b.notification_id WHERE b.username='$username' ORDER BY a.id DESC LIMIT 100";
 		$hsl=mysqli_query($db,$sql);
@@ -22,6 +24,8 @@
 	}
 	
 	if($mode == "notifications_details"){
+		$return .= "<table class='title'><tr><td>NOTIFICATION DETAIL</td></tr></table>";
+		$return .= "<br>";
 		$sql = "SELECT title,message FROM app_notifications WHERE id='$id'";
 		$hsl=mysqli_query($db,$sql);
 		while(list($title,$message)=mysqli_fetch_array($hsl)){
@@ -32,6 +36,8 @@
 	}
 	
 	if($mode == "bookings_list"){
+		$return .= "<table class='title'><tr><td>BOOKING LIST</td></tr></table>";
+		$return .= "<br>";
 		$return .= "<table class='list'>
 						<tr>
 							<th>No</th>

@@ -18,6 +18,43 @@
 	</head>
 	<body>
 		<style>
+			body {
+				font-size : 10px;
+			}
+			
+			table {
+				width:100%;
+			}
+			
+			.title td {
+				font-size : 14px;
+				font-weight : bolder;
+				text-align : center;
+			}
+
+			.list tr:nth-child(odd){
+				background-color:rgb(232, 232, 255);
+			}
+			
+			.list td {
+				font-size : 10px;
+				font-weight : normal;
+			}
+			
+			.list td a {
+				text-decoration : none;
+				color : #0865F1;
+			}
+			
+			.list_row_1 td {
+				font-size : 11px;
+				font-weight : bolder;
+			}
+			
+			.list_row_2 td {
+				font-size : 10px;
+				font-weight : normal;
+			}
 		</style>
 <?php
 	include_once "../connect_config.php";
