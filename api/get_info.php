@@ -31,12 +31,6 @@
 		$return .= "<br><br><input type='button' value='BACK' onclick=\"window.location='?mode=notifications_list&username=$username'\">";
 	}
 	
-	if($mode == "notifications_unread"){
-		$sql = "SELECT count(0) FROM app_notifications a INNER JOIN app_notifications_status b ON a.id = b.notification_id WHERE b.username='$username' AND b.status < 2";
-		$hsl=mysqli_query($db,$sql);
-		list($return)=mysqli_fetch_array($hsl);
-	}
-	
 	if($mode == "bookings_list"){
 		$return .= "<table class='list'>
 						<tr>
