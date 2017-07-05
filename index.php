@@ -39,12 +39,12 @@
 			$person=$_POST["person"];
 			
 			$tanggal=date("Y-m-d");
-			$kode="WEBOOK/".date("ymd")."/";
-			$sql="SELECT idseqno FROM trx_booking WHERE kode LIKE '$kode%' ORDER BY idseqno DESC LIMIT 1";
+			$kode="BOOK/".date("ymd")."/";
+			$sql="SELECT idseqno FROM trx_booking WHERE kode LIKE '".$kode."%WEB' ORDER BY idseqno DESC LIMIT 1";
 			$hsltemp=mysqli_query($db,$sql);
 			list($idseqno)=mysqli_fetch_array($hsltemp);
 			$idseqno++;
-			$kode.=substr("000",0,3-strlen($idseqno)).$idseqno;
+			$kode.=substr("000",0,3-strlen($idseqno)).$idseqno."WEB";
 			$periode=date("Y-m-01");
 			$sql="INSERT INTO trx_booking (kode,idseqno,tanggal,title,nama,idtype,idno,alamat,phone,email,company,arrival,departure,person,notes) VALUES ";
 			$sql.="('$kode','$idseqno','$tanggal','$title','$nama','$idtype','$idno','$alamat','$phone','$email','$company','$arrival','$departure','$person','$notes')";
@@ -415,14 +415,19 @@
 					<div class="b-parallax__content" style="position:relative;top:-150px;">
 						<div class="b-parallax__content__body">
 						<h1>Booking</h1>
-						<form method="POST" onsubmit="return submitbooking();">
-							<fieldset style="background-color: rgb(232, 232, 255);">
-								<table style="color:#0865F1;font-size:14px;text-shadow: 1px 1px #A9A9A9;">
-								<?php
-									if($successmessage!=""){
-										echo "<tr><td colspan='3'><h2><b>$successmessage</b></h2></td></tr>";
-									}
-								?>
+						<fieldset style="background-color: rgb(232, 232, 255);">
+								
+							<?php
+								if($successmessage!=""){
+									echo "<table id=\"successmessage\" style=\"color:#0865F1;font-size:14px;text-shadow: 1px 1px #A9A9A9;\">";
+									echo "<tr><td colspan='3'><h2><b>$successmessage</b></h2></td></tr>";
+									?><tr><td align="center" colspan="3"><?php echo formsubmit("booking","OK","onclick=\"bookingform.style.display='block';successmessage.style.display='none';\""); ?></td></tr><?php
+									echo "</table>";
+									$bookingformhide = "display:none;";
+								}
+							?>
+							<form method="POST" onsubmit="return submitbooking();">
+								<table id="bookingform" style="<?=$bookingformhide;?> color:#0865F1;font-size:14px;text-shadow: 1px 1px #A9A9A9;">
 									<tr>
 										<td>Arrival</td>
 										<td>:</td>
@@ -495,8 +500,8 @@
 										<td align="center" colspan="3"><br><?php echo formsubmit("booking","Submit"); ?></td>
 									</tr>
 								</table>
-							</fieldset>
-						</form>
+							</form>
+						</fieldset>
 					</div>
 				</div>
 			</div>
