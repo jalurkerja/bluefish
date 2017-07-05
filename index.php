@@ -39,12 +39,12 @@
 			$person=$_POST["person"];
 			
 			$tanggal=date("Y-m-d");
-			$kode="BOOK/".date("ymd")."/";
-			$sql="SELECT idseqno FROM trx_booking WHERE kode LIKE '".$kode."%WEB' ORDER BY idseqno DESC LIMIT 1";
+			$kode="BOOK/".date("Ymd")."/";
+			$sql="SELECT idseqno FROM trx_booking WHERE kode LIKE '".$kode."%W' ORDER BY idseqno DESC LIMIT 1";
 			$hsltemp=mysqli_query($db,$sql);
 			list($idseqno)=mysqli_fetch_array($hsltemp);
 			$idseqno++;
-			$kode.=substr("000",0,3-strlen($idseqno)).$idseqno."WEB";
+			$kode.=substr("000",0,3-strlen($idseqno)).$idseqno."W";
 			$periode=date("Y-m-01");
 			$sql="INSERT INTO trx_booking (kode,idseqno,tanggal,title,nama,idtype,idno,alamat,phone,email,company,arrival,departure,person,notes) VALUES ";
 			$sql.="('$kode','$idseqno','$tanggal','$title','$nama','$idtype','$idno','$alamat','$phone','$email','$company','$arrival','$departure','$person','$notes')";
@@ -173,7 +173,7 @@
 							<a onclick="scrollto(7);">Rate & Special Offer</a>
 							<a onclick="scrollto(8);">Activities</a>
 							<a onclick="scrollto(14);">Contact Us</a>
-							<?php if($_GET["dsjfkhdfasfajks"] == "jdsklfjdasklfjdsk"){ ?>
+							<?php if($_GET["booking"] == "123"){ ?>
 							<a onclick="scrollto(15);">Booking</a>
 							<?php } ?>
 							<a onclick="scrollto(16);">Thanks</a>
@@ -407,7 +407,7 @@
 				</div>
 			</div>
 		</div>
-		<?php if($_GET["dsjfkhdfasfajks"] == "jdsklfjdasklfjdsk"){ ?>
+		<?php if($_GET["booking"] == "123"){ ?>
 		<div class="big_fixed_image" style="background-image: url('images/booking.jpg');">
 			<div class="b-parallax">
 				<div class="i-parallax__overlay"></div>
@@ -424,6 +424,8 @@
 									?><tr><td align="center" colspan="3"><?php echo formsubmit("booking","OK","onclick=\"bookingform.style.display='block';successmessage.style.display='none';\""); ?></td></tr><?php
 									echo "</table>";
 									$bookingformhide = "display:none;";
+									$_POST = array();
+									$justbooking = true;
 								}
 							?>
 							<form method="POST" onsubmit="return submitbooking();">
@@ -526,7 +528,7 @@
 			</div>
 		</div>
 		<?php 
-			if($_POST["booking"]){
+			if($_POST["booking"] || $justbooking){
 				?><script language="javascript"> scrollto(15); </script> <?php
 			}
 		?>
