@@ -21,7 +21,6 @@
 	}
 </script>
 <?php
-	include_once "header_window_content.php";
 	$datevalue=$_GET["datevalue"];
 	$selected_date=date("d");
 	if($datevalue){
@@ -126,6 +125,3 @@
 		}
 	?>
 </table>
-<?php
-	include_once "footer_window_content.php";
-?>
