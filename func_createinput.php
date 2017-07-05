@@ -15,7 +15,7 @@
 		return $tanggal;
 	}
 	function formsubmit($name,$value="",$javascript=""){
-		echo "<input type=\"submit\" name=\"$name\" id=\"$name\" value=\"$value\" style=\"font-size:10px;\" $javascript>";
+		echo "<input type=\"submit\" name=\"$name\" id=\"$name\" value=\"$value\" style=\"font-size:14px;height: 27px;width: 100px;background-color: #FF6808;border: solid 1px #B3B3B3;color: #FEFEFE;\" $javascript>";
 	}
 	function formupload($name,$accept){
 		echo "<input type=\"file\" name=\"$name\" accept=\"$accept/*\">";
@@ -32,7 +32,7 @@
 		if($mode=="input"){
 			if(!$size){$size="30";}			
 			if($isreadonly){$readonly="readonly";}else{$readonly="";}
-			$return="<input type=\"text\" value=\"$value\" id=\"$name\" name=\"$name\" $readonly size=\"$size\" style=\"text-align:$align;font-size:10px;\" $javafunction>";
+			$return="<input type=\"text\" value=\"$value\" id=\"$name\" name=\"$name\" $readonly size=\"$size\" style=\"text-align:$align;font-size:14px;\" $javafunction>";
 		}
 		if($mode=="span"){
 			$return="<span id=\"$name\"></span>";
@@ -44,13 +44,13 @@
 		if(!$mode){$mode="input";}
 		if($mode=="input"){
 			if($isreadonly){$readonly="readonly";}else{$readonly="";}
-			$return="<input id=\"$name\" type=\"text\" name=\"$name\" value=\"$tanggal\" size=\"12\" style=\"font-size:10px;\">";
-			$return.="<img src=\"images/calendar.png\" title=\"Calendar\" border=\"0\" width=\"13\" height=\"13\" onclick=\"showCalendar('$name')\">";
+			$return="<input id=\"$name\" type=\"text\" name=\"$name\" value=\"$tanggal\" size=\"12\" style=\"font-size:14px;\">";
+			$return.="<img src=\"images/calendar.png\" title=\"Calendar\" border=\"0\" width=\"20\" height=\"20\" style=\"position:relative;top:5px;\" onclick=\"showCalendar('$name')\">";
 		}
 		if($mode=="inputperiode"){
 			if($isreadonly){$readonly="readonly";}else{$readonly="";}
-			$return="<input id=\"$name\" type=\"text\" name=\"$name\" value=\"$tanggal\" size=\"12\" style=\"font-size:10px;\">";
-			$return.="<img src=\"images/calendar.png\" title=\"Calendar\" border=\"0\" width=\"13\" height=\"13\" onclick=\"showCalendar('$name','periode')\">";
+			$return="<input id=\"$name\" type=\"text\" name=\"$name\" value=\"$tanggal\" size=\"12\" style=\"font-size:14px;\">";
+			$return.="<img src=\"images/calendar.png\" title=\"Calendar\" border=\"0\" width=\"20\" height=\"20\" onclick=\"showCalendar('$name','periode')\">";
 		}
 		if($mode=="span"){
 			$return="<span id=\"$name\">".format_tanggal($tanggal)."</span>";
@@ -64,7 +64,7 @@
 			if(!$rows){$rows="3";}			
 			if(!$cols){$cols="30";}			
 			if($isreadonly){$readonly="readonly";}else{$readonly="";}
-			$return="<textarea name=\"$name\" id=\"$name\" cols=\"$cols\" rows=\"$rows\" $readonly style=\"font-size:10px;\">$value</textarea>";
+			$return="<textarea name=\"$name\" id=\"$name\" cols=\"$cols\" rows=\"$rows\" $readonly style=\"font-size:14px;\">$value</textarea>";
 		}
 		if($mode=="span"){
 			$return="<span id=\"$name\"></span>";
@@ -75,7 +75,7 @@
 	function formselectyesno($name,$value,$isreadonly,$javafunction){
 		global $db;
 		$return="";
-		$return.="<select name=\"$name\" id=\"$name\" $javafunction style=\"font-size:10px;\">";
+		$return.="<select name=\"$name\" id=\"$name\" $javafunction style=\"font-size:14px;\">";
 		$selected="";if($value==1){$selected="selected";}
 		$return.="<option value=\"1\" $selected>Ya</option>";
 		$selected="";if($value==0){$selected="selected";}
@@ -87,7 +87,7 @@
 	function formselect_closeopen($name,$value,$isreadonly,$javafunction){
 		global $db;
 		$return="";
-		$return.="<select name=\"$name\" id=\"$name\" $javafunction style=\"font-size:10px;\">";
+		$return.="<select name=\"$name\" id=\"$name\" $javafunction style=\"font-size:14px;\">";
 		$selected="";if($value==1){$selected="selected";}
 		$return.="<option value=\"1\" $selected>Closed</option>";
 		$selected="";if($value==0){$selected="selected";}
@@ -100,7 +100,7 @@
 		global $db;
 		if(!$noselectcap){$noselectcap="Pilih";}
 		$return="";
-		$return.="<select name=\"$name\" id=\"$name\" $javafunction style=\"font-size:10px;\">";
+		$return.="<select name=\"$name\" id=\"$name\" $javafunction style=\"font-size:14px;\">";
 		$return.="<option value=\"\">-$noselectcap-</option>";
 		if($caption2){
 			$sql="SELECT $kode,$caption1,$caption2 FROM $tablename";

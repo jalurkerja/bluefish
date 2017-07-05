@@ -8,7 +8,7 @@
 	}
 ?>
 <script language="JavaScript">
-	window.resizeTo(280,380);
+	window.resizeTo(280,300);
 	function showparent(tgl,bln,thn,textid){
 		<?php if($_GET["mode"]=="periode"){ ?>
 		// window.opener.document.getElementById(textid).value=thn+"-"+bln+"-01";

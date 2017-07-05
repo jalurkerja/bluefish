@@ -30,13 +30,21 @@ function sendmail($email,$name,$subject,$body,$arrattachment=array()){
 function sendmailmulti($arrto,$arrname,$arrcc,$arrccname,$subject,$body,$arrattachment=array()){
 	$mail = new phpmailer();
 	$mail->IsSMTP();
-	$mail->SMTPAuth = true; 
-	$mail->Username = "info@kag.co.id";
-	$mail->Password = "rahasiax";
+	$mail->SMTPDebug  = 0;
+	$mail->SMTPAuth = true;
+	$mail->SMTPSecure = "ssl";
+	$mail->Host       =  "mail.bluefish.co.id";
+	$mail->Port       = 465;
+	$mail->Username = "marketing@bluefish.co.id";
+	$mail->Password = "R2h2s12*";
 	$webmaster_email = "marketing@bluefish.co.id";
+	$mail->SMTPKeepAlive = true;  
 	$mail->From = $webmaster_email;
 	$mail->FromName = "BLUEFISH SYSTEM";
 	$mail->AddReplyTo($webmaster_email,"BLUEFISH SYSTEM");
+	$mail->SetFrom($webmaster_email,"BLUEFISH SYSTEM");
+	$mail->Mailer = "smtp"; 
+	$mail->CharSet = 'utf-8';  
 	$mail->WordWrap = 50; 
 	if(count($arrto)>0){
 		foreach($arrto as $key => $to){

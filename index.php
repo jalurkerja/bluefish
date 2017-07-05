@@ -97,6 +97,9 @@
 				$body.="</table>";
 				$returnmail=sendmailmulti($arrto,$arrname,$arrcc,$arrccname,$subject,$body);
 				
+				$sql="INSERT INTO app_notifications (title,message,created_at,created_by) VALUES ('WEBOOK $_title $nama checkin at ".format_tanggal($arrival)."','$body',NOW(),'$email')";
+				mysqli_query($db,$sql);
+				
 				$arrto2[]=$email;
 				$arrname2[]="$_title $nama";
 				$subject2="Blue Fish Resort Booking ($kode)";
@@ -106,10 +109,10 @@
 				$body2.="Your booking details are as follows:<br>";
 				$body2.="<table>";
 				$body2.="	<tr>";
-				$body2.="		<td>Kode Booking</td><td>:</td><td>$kode</td>";
+				$body2.="		<td>Booking Code</td><td>:</td><td>$kode</td>";
 				$body2.="	</tr>";
 				$body2.="	<tr>";
-				$body2.="		<td>Tanggal Booking</td><td>:</td><td>".format_tanggal($tanggal)."</td>";
+				$body2.="		<td>Booking Date</td><td>:</td><td>".format_tanggal($tanggal)."</td>";
 				$body2.="	</tr>";
 				$body2.="	<tr>";
 				$body2.="		<td>Arrival</td><td>:</td><td>".format_tanggal($arrival)."</td>";
@@ -118,7 +121,7 @@
 				$body2.="		<td>Departure</td><td>:</td><td>".format_tanggal($departure)."</td>";
 				$body2.="	</tr>";
 				$body2.="	<tr>";
-				$body2.="		<td>Nama</td><td>:</td><td>$_title $nama</td>";
+				$body2.="		<td>Name</td><td>:</td><td>$_title $nama</td>";
 				$body2.="	</tr>";
 				$body2.="	<tr>";
 				$body2.="		<td>Person</td><td>:</td><td>$person</td>";
@@ -127,7 +130,7 @@
 				$body2.="		<td>ID Number</td><td>:</td><td>$idno ($_idtype)</td>";
 				$body2.="	</tr>";
 				$body2.="	<tr>";
-				$body2.="		<td>Alamat</td><td>:</td><td>$alamat</td>";
+				$body2.="		<td>Address</td><td>:</td><td>$alamat</td>";
 				$body2.="	</tr>";
 				$body2.="	<tr>";
 				$body2.="		<td>Phone</td><td>:</td><td>$phone</td>";
@@ -170,7 +173,10 @@
 							<a onclick="scrollto(7);">Rate & Special Offer</a>
 							<a onclick="scrollto(8);">Activities</a>
 							<a onclick="scrollto(14);">Contact Us</a>
-							<a onclick="scrollto(15);">Thanks</a>
+							<?php if($_GET["dsjfkhdfasfajks"] == "jdsklfjdasklfjdsk"){ ?>
+							<a onclick="scrollto(15);">Booking</a>
+							<?php } ?>
+							<a onclick="scrollto(16);">Thanks</a>
 						</div>
 					</td>
 				</tr>
@@ -401,6 +407,101 @@
 				</div>
 			</div>
 		</div>
+		<?php if($_GET["dsjfkhdfasfajks"] == "jdsklfjdasklfjdsk"){ ?>
+		<div class="big_fixed_image" style="background-image: url('images/booking.jpg');">
+			<div class="b-parallax">
+				<div class="i-parallax__overlay"></div>
+				<div class="b-parallax__content-box">
+					<div class="b-parallax__content" style="position:relative;top:-150px;">
+						<div class="b-parallax__content__body">
+						<h1>Booking</h1>
+						<form method="POST" onsubmit="return submitbooking();">
+							<fieldset style="background-color: rgb(232, 232, 255);">
+								<table style="color:#0865F1;font-size:14px;text-shadow: 1px 1px #A9A9A9;">
+								<?php
+									if($successmessage!=""){
+										echo "<tr><td colspan='3'><h2><b>$successmessage</b></h2></td></tr>";
+									}
+								?>
+									<tr>
+										<td>Arrival</td>
+										<td>:</td>
+										<td><?php formtanggal("arrival"); ?></td>
+									</tr>
+									<tr>
+										<td>Departure</td>
+										<td>:</td>
+										<td><?php formtanggal("departure"); ?></td>
+									</tr>
+									<tr>
+										<td>Person</td>
+										<td>:</td>
+										<td>
+											<?php echo formtext("person","2"); ?>
+										</td>
+									</tr>
+									<tr>
+										<td>Name</td>
+										<td>:</td>
+										<td>
+											<?php echo formselect("title","mst_name_title","kode","description","","description","","","title"); ?>
+											<?php echo formtext("nama","32"); ?>
+										</td>
+									</tr>
+									<tr>
+										<td nowrap>ID Number</td>
+										<td>:</td>
+										<td>
+											<?php echo formselect("idtype","mst_id_type","kode","description","","description","","","id type"); ?>
+											<?php echo formtext("idno","29"); ?>
+										</td>
+									</tr>
+									<tr>
+										<td>Address</td>
+										<td>:</td>
+										<td><?php echo formtext("alamat1","40"); ?></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>:</td>
+										<td><?php echo formtext("alamat2","40"); ?></td>
+									</tr>
+									<tr>
+										<td>Phone</td>
+										<td>:</td>
+										<td><?php echo formtext("phone","20"); ?></td>
+									</tr>
+									<tr>
+										<td>Email</td>
+										<td>:</td>
+										<td><?php echo formtext("email","40"); ?></td>
+									</tr>
+									<tr>
+										<td>Company</td>
+										<td>:</td>
+										<td><?php echo formtext("company","20"); ?></td>
+									</tr>
+									<tr>
+										<td>Notes</td>
+										<td>:</td>
+										<td><?php echo formtext("notes","40"); ?></td>
+									</tr>
+									<tr>
+										<td><img width="60" height="25"  src="loadcaptcha.php"></td>
+										<td>:</td>
+										<td><?php echo formtext("captcha","8"); ?></td>
+									</tr>
+									<tr>
+										<td align="center" colspan="3"><br><?php echo formsubmit("booking","Submit"); ?></td>
+									</tr>
+								</table>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
 		<div class="big_fixed_image" style="background-image: url('images/thanks.jpg');">
 			<div class="b-parallax">
 				<div class="i-parallax__overlay"></div>
@@ -414,6 +515,11 @@
 				</div>
 			</div>
 		</div>
+		<?php 
+			if($_POST["booking"]){
+				?><script language="javascript"> scrollto(15); </script> <?php
+			}
+		?>
 		<script>
 			// Load the IFrame Player API code asynchronously.
 			var tag = document.createElement('script');
