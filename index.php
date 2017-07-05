@@ -95,7 +95,7 @@
 				$body.="		<td>Notes</td><td>:</td><td>$notes</td>";
 				$body.="	</tr>";
 				$body.="</table>";
-				$returnmail=sendmailmulti($arrto,$arrname,$arrcc,$arrccname,$subject,$body);
+				// $returnmail=sendmailmulti($arrto,$arrname,$arrcc,$arrccname,$subject,$body);
 				
 				$sql="INSERT INTO app_notifications (title,message,created_at,created_by) VALUES ('WEBOOK $_title $nama checkin at ".format_tanggal($arrival)."','$body',NOW(),'$email')";
 				mysqli_query($db,$sql);
@@ -151,7 +151,7 @@
 				$body2.="Best Regards,";
 				$body2.="<br><br><br><br>";
 				$body2.="BlueFish Resort";
-				$returnmail2=sendmailmulti($arrto2,$arrname2,$arrcc2,$arrccname2,$subject2,$body2);
+				// $returnmail2=sendmailmulti($arrto2,$arrname2,$arrcc2,$arrccname2,$subject2,$body2);
 				
 			}
 		}

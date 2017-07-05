@@ -1,7 +1,7 @@
 <?php
 require("phpmailer/class.phpmailer.php");
 function sendmail($email,$name,$subject,$body,$arrattachment=array()){
-	$mail = new phpmailer();
+	$mail = new PHPMailer();
 	$mail->IsSMTP();
 	$mail->SMTPAuth = true; 
 	$mail->Username = "info@kag.co.id";
@@ -28,7 +28,7 @@ function sendmail($email,$name,$subject,$body,$arrattachment=array()){
 }
 
 function sendmailmulti($arrto,$arrname,$arrcc,$arrccname,$subject,$body,$arrattachment=array()){
-	$mail = new phpmailer();
+	$mail = new PHPMailer();
 	$mail->IsSMTP();
 	$mail->SMTPDebug  = 0;
 	$mail->SMTPAuth = true;
