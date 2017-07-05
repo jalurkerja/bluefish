@@ -96,7 +96,7 @@
 		echo $return;
 	}
 	
-	function formselect($name,$tablename,$kode,$caption1,$caption2,$order,$isreadonly,$javafunction,$noselectcap){
+	function formselect($name,$tablename,$kode,$caption1,$caption2,$order,$isreadonly,$javafunction,$noselectcap,$value){
 		global $db;
 		if(!$noselectcap){$noselectcap="Pilih";}
 		$return="";
@@ -112,12 +112,14 @@
 		}
 		$hsltemp=mysqli_query($db,$sql);
 		while(list($kode,$caption1,$caption2)=mysqli_fetch_array($hsltemp)){
+			$selected = "";
+			if($value == $kode) $selected = "selected";
 			if($caption2){
 				$caption=$caption1." ".$caption2;
 			}else{
 				$caption=$caption1;
 			}
-			$return.="<option value=\"$kode\">$caption</option>";
+			$return.="<option value=\"$kode\" $selected>$caption</option>";
 		}
 		$return.="</select>";
 		echo $return;

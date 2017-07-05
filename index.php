@@ -428,68 +428,73 @@
 							?>
 							<form method="POST" onsubmit="return submitbooking();">
 								<table id="bookingform" style="<?=$bookingformhide;?> color:#0865F1;font-size:14px;text-shadow: 1px 1px #A9A9A9;">
+									<?php
+										if($errormessage!=""){
+											?> <tr><td colspan='3' style="color:red"><h2><b><?=$errormessage;?></b></h2></td></tr> <?php
+										}
+									?>
 									<tr>
 										<td>Arrival</td>
 										<td>:</td>
-										<td><?php formtanggal("arrival"); ?></td>
+										<td><?php formtanggal("arrival",$_POST["arrival"]); ?></td>
 									</tr>
 									<tr>
 										<td>Departure</td>
 										<td>:</td>
-										<td><?php formtanggal("departure"); ?></td>
+										<td><?php formtanggal("departure",$_POST["departure"]); ?></td>
 									</tr>
 									<tr>
 										<td>Person</td>
 										<td>:</td>
 										<td>
-											<?php echo formtext("person","2"); ?>
+											<?php echo formtext("person","2",null,false,"","",$_POST["person"]); ?>
 										</td>
 									</tr>
 									<tr>
 										<td>Name</td>
 										<td>:</td>
 										<td>
-											<?php echo formselect("title","mst_name_title","kode","description","","description","","","title"); ?>
-											<?php echo formtext("nama","32"); ?>
+											<?php echo formselect("title","mst_name_title","kode","description","","description","","","title",$_POST["title"]); ?>
+											<?php echo formtext("nama","32",null,false,"","",$_POST["nama"]); ?>
 										</td>
 									</tr>
 									<tr>
 										<td nowrap>ID Number</td>
 										<td>:</td>
 										<td>
-											<?php echo formselect("idtype","mst_id_type","kode","description","","description","","","id type"); ?>
-											<?php echo formtext("idno","29"); ?>
+											<?php echo formselect("idtype","mst_id_type","kode","description","","description","","","id type",$_POST["idtype"]); ?>
+											<?php echo formtext("idno","29",null,false,"","",$_POST["idno"]); ?>
 										</td>
 									</tr>
 									<tr>
 										<td>Address</td>
 										<td>:</td>
-										<td><?php echo formtext("alamat1","40"); ?></td>
+										<td><?php echo formtext("alamat1","40",null,false,"","",$_POST["alamat1"]); ?></td>
 									</tr>
 									<tr>
 										<td></td>
 										<td>:</td>
-										<td><?php echo formtext("alamat2","40"); ?></td>
+										<td><?php echo formtext("alamat2","40",null,false,"","",$_POST["alamat2"]); ?></td>
 									</tr>
 									<tr>
 										<td>Phone</td>
 										<td>:</td>
-										<td><?php echo formtext("phone","20"); ?></td>
+										<td><?php echo formtext("phone","20",null,false,"","",$_POST["phone"]); ?></td>
 									</tr>
 									<tr>
 										<td>Email</td>
 										<td>:</td>
-										<td><?php echo formtext("email","40"); ?></td>
+										<td><?php echo formtext("email","40",null,false,"","",$_POST["email"]); ?></td>
 									</tr>
 									<tr>
 										<td>Company</td>
 										<td>:</td>
-										<td><?php echo formtext("company","20"); ?></td>
+										<td><?php echo formtext("company","20",null,false,"","",$_POST["company"]); ?></td>
 									</tr>
 									<tr>
 										<td>Notes</td>
 										<td>:</td>
-										<td><?php echo formtext("notes","40"); ?></td>
+										<td><?php echo formtext("notes","40",null,false,"","",$_POST["notes"]); ?></td>
 									</tr>
 									<tr>
 										<td><img width="60" height="25"  src="loadcaptcha.php"></td>
