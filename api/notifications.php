@@ -9,4 +9,5 @@
 ";
 		mysqli_query($db,"INSERT INTO app_notifications_status (username,notification_id,status,updated_at,updated_ip) VALUES ('$username','$id','1',NOW(),'".$_SERVER["REMOTE_ADDR"]."')");
 	}
+	echo $return;
 ?>
